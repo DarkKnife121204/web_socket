@@ -13,6 +13,10 @@ class MessageController extends Controller
 
     public function store()
     {
-        event(new ChatEvent(request()->input('message')));
+
+        if(request()->input('message')=='hello socket')
+        {
+            ChatEvent::dispatch();
+        }
     }
 }

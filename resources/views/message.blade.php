@@ -25,16 +25,15 @@
     <script type="module">
 
         window.Echo.channel('chatting').listen('ChatEvent', () =>{
-            document.getElementById('response').innerHTML += '<p>' + 'hello human' + '</p>';
+            setTimeout(()=>{document.getElementById('response').innerHTML += '<p>' + 'hello human' + '</p>';}, 10000);
         });
 
         document.getElementById('send-button').addEventListener('click', async function () {
             const input = document.getElementById('message-input');
             const message = input.value.trim();
-            window.axios.post('/message',{
+            await window.axios.post('/message',{
                 message: message
             })
-
         });
 
     </script>
